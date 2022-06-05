@@ -4,10 +4,10 @@
 </p>
 <img
   src="{{ post?.imagePath }}"
-  alt="{{ post?.alt }}"
+
   class="img-responsive"
 />
 <p>Author: {{ post?.author }}</p>
 <p>Date: {{ post?.dateTimeCreated }}</p>
-<button>Edit</button> |
-<button (click)="onDelete()" >Delete</button>
+<button class="btn btn-success" (click)="onEdit()">Edit</button> |
+<button class="btn btn-danger" (click)="onDelete()" >Delete</button>

@@ -1,21 +1,24 @@
 <div class="row">
   <div class="col-md-6">
-    <h3>Post Add</h3>
-    <form>
+    <h3 *ngIf="editMode === false">Post Add</h3>
+    <h3 *ngIf="editMode === true">Post Edit</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>Tittle</label>
-        <input type="text" name=""  class="form-control" placeholder="Tittle here" aria-describedby="helpId">
+        <input type="text" name=""  class="form-control" placeholder="Tittle here" formControlName="tittle">
       </div>
       <div class="form-group">
         <label>Description</label>
-        <textarea class="form-control" type="text" placeholder="your description here"></textarea>
+        <textarea class="form-control" type="text" placeholder="your description here" formControlName="description"></textarea>
       </div>
       <div class="form-group">
         <label>Image path</label>
-        <input type="text" name=""  class="form-control" placeholder="url from your image here" aria-describedby="helpId">
+        <input type="text" name=""  class="form-control" placeholder="url from your image here" formControlName="imagePath">
+        <img class="img-responsive" src="{{ form.value.imagePath }}">
       </div>
 
-      <button class="btn btn-success" type="submit">Save</button>
+      <button class="btn btn-success" type="submit" [disabled]="form.invalid">Save</button> |
+      <button class="btn btn-primary" type="reset">Clear</button>
     </form>
   </div>
 </div>
