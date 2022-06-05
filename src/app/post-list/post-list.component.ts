@@ -10,10 +10,15 @@ import {PostService} from "../post.service";
 export class PostListComponent implements OnInit {
   listOfPosts: Post[] = [];
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService) {
+  }
 
   ngOnInit(): void {
     this.listOfPosts = this.postService.getPosts();
+    this.postService.listChangedEvent.subscribe((listOfPosts: Post[]) => {
+      this.listOfPosts = this.postService.getPosts();
+    })
+
   }
 
 }

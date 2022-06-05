@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Post} from "../post.model";
 import {PostService} from "../post.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {BackEndService} from "../back-end.service";
 
 @Component({
   selector: 'app-post-edit',
@@ -15,7 +16,7 @@ export class PostEditComponent implements OnInit {
   index: number = 0;
   editMode = false;
 
-  constructor(private postService: PostService, private router: Router, private route: ActivatedRoute) {
+  constructor(private postService: PostService, private router: Router, private route: ActivatedRoute, private backEndService: BackEndService) {
   }
 
   ngOnInit(): void {
@@ -52,7 +53,14 @@ export class PostEditComponent implements OnInit {
     const imagePath = this.form.value.imagePath;
 
     // Ready with Object
-    const post: Post = new Post(title, description, imagePath, "test@test.com", new Date());
+    const post: Post = new Post(
+      title,
+      description,
+      imagePath,
+      "test@test.com",
+      new Date(),
+      0
+    );
 
     // Calling service
     if (this.editMode) {
@@ -63,5 +71,8 @@ export class PostEditComponent implements OnInit {
 
     // Navigate to /post-list
     this.router.navigate(["/post-list"])
+    this.backEndService.saveData()
   }
+
+
 }

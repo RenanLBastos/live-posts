@@ -10,14 +10,30 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a routerLink="/post-list">Home</a></li>
+        <li>
+          <a routerLink="/post-list">Home</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav">
-        <li><a routerLink="/post-add">Add Post</a></li>
+        <li>
+          <a routerLink="/post-add">Add Post</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/auth"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a routerLink="/auth"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li>
+          <a (click)="onSave()" class="pointer"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+        </li>
+        <li>
+          <a (click)="onFetch()" class="pointer"><span class="glyphicon glyphicon-download" ></span> Fetch</a>
+        </li>
+        <li>
+          <a routerLink="/auth"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+        </li>
+        <li>
+          <a routerLink="/auth">
+            <span class="glyphicon glyphicon-log-in"></span> Login
+          </a>
+        </li>
       </ul>
     </div>
   </div>
